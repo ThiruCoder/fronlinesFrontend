@@ -124,7 +124,7 @@ export default function EmployeeTable({ employees }) {
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                         <input
                             type="text"
-                            placeholder="Search by name, email, title, or department..."
+                            placeholder="Search by Ceo/Company, Department, or Founded..."
                             value={searchTerm}
                             onChange={(e) => {
                                 setSearchTerm(e.target.value);
@@ -204,10 +204,10 @@ export default function EmployeeTable({ employees }) {
                                             onClick={() => handleSort('industry')}
                                             className={`${activeFilterField === 'industry' ? 'text-green-500' : 'text-slate-700 '} flex items-center gap-2 text-[8px] sm:text-xs font-semibold uppercase tracking-wider hover:text-blue-600 transition-colors`}
                                         >
-                                            Industry
+                                            Department
                                             {activeFilterField === 'industry' ?
-                                                <ArrowDown className="absolute top-7 right-9 -translate-y-1/2 translate-x-1/2 text-green-600 text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full" />
-                                                : <ArrowUp className="absolute top-7 right-6 -translate-y-1/2 translate-x-1/2 text-blue-600 text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full" />}
+                                                <ArrowDown className="absolute top-7 right-5 -translate-y-1/2 translate-x-1/2 text-green-600 text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full" />
+                                                : <ArrowUp className="absolute top-7 right-4 -translate-y-1/2 translate-x-1/2 text-blue-600 text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full" />}
                                         </button>
                                     </th>
                                     <th className="px-2 py-1 text-left relative">

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Search, ArrowUpDown, Filter, Mail, Phone, MapPin, Calendar, ChevronLeft, ChevronRight, CircleCheckBig, ArrowDown, ArrowUp, ArrowLeft } from 'lucide-react';
+import { Search, ArrowUpDown, Filter, Mail, Phone, MapPin, Calendar, ChevronLeft, ChevronRight, CircleCheckBig, ArrowDown, ArrowUp, ArrowLeft, Scan } from 'lucide-react';
 import { useDispatch } from 'react-redux';
 
 const deps = [
@@ -252,11 +252,27 @@ export default function EmployeeTable({ employees }) {
                             </thead>
                             <tbody className="divide-y divide-slate-100">
                                 {paginatedEmployees.map((employee) => (
-                                    <tr onClick={() => showMoreData(employee._id)} key={employee._id} className="hover:bg-slate-50 transition-colors">
+                                    <tr key={employee._id} className="hover:bg-slate-50 transition-colors">
                                         <td className="px-6 py-4">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-5 md:w-10 h-5 md:h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-semibold text-[8px] sm:text-xs flex-shrink-0">
-                                                    {getInitials(employee.name)}
+                                                <div className="relative flex items-center gap-2 group cursor-pointer">
+                                                    <div
+                                                        onClick={() => showMoreData(employee._id)}
+                                                        className="relative cursor-pointer w-5 md:w-10 h-5 md:h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-semibold text-[8px] sm:text-xs flex-shrink-0 group overflow-hidden transition-transform duration-300 hover:scale-110"
+                                                    >
+                                                        <span className="transition-opacity duration-300 group-hover:opacity-30">
+                                                            {getInitials(employee.name)}
+                                                        </span>
+
+                                                        <span className="absolute inset-0 flex items-center justify-center text-white text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                            <Scan />
+                                                        </span>
+                                                    </div>
+                                                    <div className="absolute left-full ml-2 w-[78px] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 bg-gray-400 text-white text-xs rounded-md px-2 py-1 shadow-lg transition-all duration-300 pointer-events-none">
+                                                        Show more
+                                                        {/* Arrow */}
+                                                        <div className="absolute left-[-4px] top-1/2 -translate-y-1/2 w-2 h-2 bg-gray-400 rotate-45"></div>
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     <div className="text-[8px] sm:text-xs font-semibold text-slate-900">{employee.name}</div>
@@ -323,7 +339,7 @@ export default function EmployeeTable({ employees }) {
                                 <span className="font-semibold text-slate-900">
                                     {Math.min(currentPage * itemsPerPage, filteredAndSortedEmployees.length)}
                                 </span>{' '}
-                                of <span className="font-semibold text-slate-900">{filteredAndSortedEmployees.length}</span> employees
+                                of <span className="font-semibold text-slate-900">{filteredAndSortedEmployees.length}</span> companies
                             </div>
 
                             <div className="flex items-center gap-2">
